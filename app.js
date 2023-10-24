@@ -1,8 +1,10 @@
-const http = require('http');
 const express = require('express');
-
 const app = express();
+const bodyParser = require('body-parser');
+const appRouter = require('./routes/router');
 
-const server = http.createServer();
+app.use(bodyParser.urlencoded({extended: false}));
 
-server.listen(3000);
+app.use(appRouter);
+
+app.listen(3000);
